@@ -1,6 +1,6 @@
 //urls
-const imgsUrl = 'http://localhost:3000/images';
-const commentsUrl = 'http://localhost:3000/comments';
+const imgsUrl = 'http://localhost:3000/images/';
+const commentsUrl = 'http://localhost:3000/comments/';
 
 //get center card title
 const postTitle = document.querySelector('#card-title');
@@ -100,36 +100,39 @@ newCommentForm.addEventListener('submit', async (event) => {
     //stop default
     event.preventDefault();
     //get user input
-    const userInput = newCommentForm['comment'].value;
-    //check for valid input and then post
-    if(userInput != ''){
-        let newComment = document.createElement('li');
-        newComment.classList.add('comments');
-        newComment.textContent = userInput;
-        commentList.append(newComment);
-    } else {
-        alert('invalid entry')
-    }
-    // //check if blank string
+    let userInput = newCommentForm['comment'].value;
+    // //check for valid input and then post
     // if(userInput != ''){
-    //     //if valid input make new object
-    //     newComment = {
-    //         imageId: imgId, content: userInput
-    //     };
-    //     //convert to json object
-    //     const newEntryDb = JSON.stringify(newComment);
-    //     const addNewComment = await fetch(commentsUrl, {
-    //         method: 'POST',
-    //         header: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //         },
-    //         body: newEntryDb,
-    //     })
-        
+    //     let newComment = document.createElement('li');
+    //     newComment.classList.add('comments');
+    //     newComment.textContent = userInput;
+    //     commentList.append(newComment);
+    // } else {
+    //     alert('invalid entry')
     // }
+    //check if blank string
+    
+    let commentObj = {
+        'imageId': imgId,
+        'content': userInput,
+    }
+    let newEntryDb = JSON.stringify(commentObj);
+
+    let addNew = await fetch('http://localhost:3000/comments/', {
+        method: "POST",
+        header: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            "id": 4,
+            "imageId": 1,
+            "content": "fuck this shit what the fuck"
+        }),
+    })
     //clear entry
     newCommentForm['comment'].value = '';
 })
+
 renderCard();
 renderComments();
