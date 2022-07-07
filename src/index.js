@@ -110,8 +110,6 @@ newCommentForm.addEventListener('submit', async (event) => {
     } else {
         alert('invalid entry')
     }
-    //clear entry
-    newCommentForm['comment'].value = '';
     // //check if blank string
     // if(userInput != ''){
     //     //if valid input make new object
@@ -130,6 +128,8 @@ newCommentForm.addEventListener('submit', async (event) => {
     //     })
         
     // }
+    //clear entry
+    newCommentForm['comment'].value = '';
 })
 renderCard();
 renderComments();
