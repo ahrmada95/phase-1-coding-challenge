@@ -30,6 +30,7 @@ body {
 
 .image {
   width: 300px;
+  cursor: pointer;
   /* border: 1px solid black; */
 }
 
@@ -39,6 +40,7 @@ body {
   font-size: 0.9rem;
   font-weight: 600;
   color: #000000dd;
+  cursor: pointer;
 }
 
 .likes-section {
@@ -84,6 +86,7 @@ body {
 .comments li {
   margin: 2px 0;
   letter-spacing: 0.2px;
+  cursor: pointer;
 }
 
 .comment-form {
@@ -122,4 +125,8 @@ body {
 
 .comment-button:focus {
   outline: none;
+}
+
+.hidden {
+  display: none;
 }
